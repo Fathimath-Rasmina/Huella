@@ -67,6 +67,8 @@ class Accounts(AbstractBaseUser):
         verbose_name='accounts'
         verbose_name_plural ='accounts'
 
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
     
     def __str__(self):
         return self.email

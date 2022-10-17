@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'store',
     'cart',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'rasminamoossa@gmail.com'
 EMAIL_HOST_PASSWORD = 'xjsa xtlz vfbw ljgl'
 EMAIL_USE_TLS = True
+
+
+RAZOR_KEY_ID = 'rzp_test_YIUAVIrsg3hLaE'
+RAZOR_KEY_SECRET = 'pUbnqsmMvDdTPGMCdWsleBSt'

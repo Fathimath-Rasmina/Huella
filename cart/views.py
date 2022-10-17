@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from store.models import Product, Variation
+from accounts.models import Accounts
 from .models import Cart, CartItem
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
@@ -204,6 +205,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         grand_total = total + tax
     except ObjectDoesNotExist:
         pass #just ignore
+    fields = Accounts.objects.all()
     
     context = {
         'total':total,
@@ -211,5 +213,6 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         'cart_items':cart_items,
         'tax':tax,
         'grand_total':grand_total,
+        'fields':fields
     }
     return render(request,'store/checkout.html',context)
