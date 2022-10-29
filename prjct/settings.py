@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-q3a#q4e5h^ph$j_c350c540r)=j@y_lavt&_ou%zovejd2e%zc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -149,6 +149,7 @@ MESSAGE_TAGS = {
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 
 #SMTP CONFIGURATION
