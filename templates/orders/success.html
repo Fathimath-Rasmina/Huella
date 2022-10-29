@@ -70,9 +70,9 @@
                                             {% for order_product in ordered_products %}
                                             <tr>
                                                 <td>{{order_product.product}}
-                                                    <p class="text-muted small">
-                                                        {% if order_product.variations.all %}
-                                                            {% for item in order_product.variations.all %}
+                                                  <p class="text-muted small">
+                                                        {% if order_product.variation.all %}
+                                                            {% for item in order_product.variation.all %}
                                                                {{ item.variation_category | capfirst }} : {{item.variation_value | capfirst }}
                                                             {% endfor %}
                                                         {% endif %}

@@ -42,6 +42,4 @@
    label:hover ~ input:checked ~ label{
     color: #cc9000;
    }
-   .rating-star i{
-      color: #ffb503;
-   }
+   

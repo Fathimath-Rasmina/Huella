@@ -1,6 +1,6 @@
 {% load static %}
 <header class="section-header">
-  <nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+  {% comment %} <nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
     <div class="container">
       <button
         class="navbar-toggler"
@@ -39,7 +39,7 @@
       <!-- navbar-collapse .// -->
     </div>
     <!-- container //  -->
-  </nav>
+  </nav> {% endcomment %}
 
   <section class="header-main border-bottom">
     <div class="container">
@@ -48,6 +48,7 @@
           <a href="{% url 'home' %}" class="brand-wrap">
             {% comment %} <img class="" width="130px" height="55px" src="{% static 'images/huella.png' %}" /> {% endcomment %}
             <h1 class="a text-dark">Huella</h1>
+            <p class="aa">good shoes take you to good places</p>
 
           </a>
           <!-- brand-wrap.// -->
@@ -93,7 +94,7 @@
           <!-- search-wrap .end// -->
         </div>
         <!-- col.// -->
-        <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+        {% comment %} <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
           <div class="d-flex justify-content-end mb-3 mb-lg-0">
             {% if user.id is None %}
             <div class="widget-header">
@@ -124,8 +125,45 @@
             </a>
           </div>
           <!-- widgets-wrap.// -->
-        </div>
+        </div> {% endcomment %}
         <!-- col.// -->
+        <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+          <div class="d-flex justify-content-end mb-3 mb-lg-0">
+              {% if request.user.is_superadmin %}
+                  <div class="widget-header">
+                      <small class="title text-muted">Welcome {{ user.first_name }}</small>
+                      <div>
+                          <a href="{% url 'manager_dashboard' %}">Dashboard</a> <span class="dark-transp">|</span>
+                          <a href="{% url 'logout' %}">Logout</a>
+                      </div>
+                  </div>
+
+              {% elif request.user.is_authenticated %}
+                  <div class="widget-header">
+                      <small class="title text-muted">Welcome {{ user.first_name }}</small>
+                      <div>
+                          <a href="{% url 'user_dashboard' %}">Dashboard</a> <span class="dark-transp">|</span>
+                          <a href="{% url 'logout' %}">Logout</a>
+                      </div>
+                  </div>
+              {% else %}
+                  <div class="widget-header">
+                      <small class="title text-muted">Welcome Guest!</small>
+                      <div>
+                          <a href="{% url 'login' %}">Sign in</a> <span class="dark-transp">|</span>
+                          <a href="{% url 'register' %}">Register</a>
+                      </div>
+                  </div>
+              {% endif %}
+              <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+                  <div class="icon icon-sm rounded-circle border">
+                      <i class="fa fa-shopping-cart"></i>
+                  </div>
+                  <span class="badge badge-pill badge-danger notify">{{cart_count}}</span>
+              </a>
+          </div>
+          <!-- widgets-wrap.// -->
+      </div>
       </div>
       <!-- row.// -->
     </div>

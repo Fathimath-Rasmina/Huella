@@ -18,6 +18,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path,include
 
+import manager
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app.urls')),
@@ -25,5 +27,6 @@ urlpatterns = [
     path('store/',include('store.urls')),
     path('cart/',include('cart.urls')),
     path('orders/',include('orders.urls')),
+    path('manager/',include('manager.urls')),
     
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
